@@ -2,22 +2,22 @@
 @auth = Authorization: Basic alice:
 
 ### Main.Customers
-GET {{server}}/odata/v4/main/Customers
+GET {{server}}/main/Customers
 Content-Type: application/json
 {{auth}}
 
 ### Main.Customers
-POST {{server}}/odata/v4/main/Customers
+POST {{server}}/main/Customers
 Content-Type: application/json
 {{auth}}
 
 {
-    "name": "name-21004652",
+    "name": "Antonio",
     "age": 22
 }
 
 ### Main.Customers
-PATCH  {{server}}/odata/v4/main/Customers(1)
+PATCH  {{server}}main/Customers(1)
 Content-Type: application/json
 {{auth}}
 
@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ### Main.Customers
-DELETE  {{server}}/odata/v4/main/Customers(1)
+DELETE  {{server}}/main/Customers(1)
 Content-Type: application/json
 {{auth}}
 
