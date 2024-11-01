@@ -15,8 +15,10 @@ entity Customers: cuid, managed {
 entity Orders : cuid, managed {
     amount      : Decimal;
     customer    : Association to Customers;
+    nf          : Composition of one NFs on nf.order = $self; 
 }
 
 entity NFs {
-    id_fiscal: String;
+    id_fiscal   : String;
+    order       : Association to Orders;      
 }
