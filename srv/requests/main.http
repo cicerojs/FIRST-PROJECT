@@ -2,6 +2,11 @@
 @auth = Authorization: Basic alice:
 
 ### Main.Customers
+GET {{server}}/main/Customers
+Content-Type: application/json
+{{auth}}
+
+### Main.Customers
 GET {{server}}/main/Customers?$expand=orders
 Content-Type: application/json
 {{auth}}
@@ -48,5 +53,5 @@ Content-Type: application/json
 
 {
     "amount": 20.00,
-    "customer_ID": "87e6dcd5-b120-455f-bd9f-7e7ee66c2b99"
+    "customer_ID": "11dc51f5-247a-442a-a107-b811df288529"
 }
