@@ -2,7 +2,7 @@
 @auth = Authorization: Basic alice:
 
 ### Main.Customers
-GET {{server}}/main/Customers
+GET {{server}}/main/Customers?$expand=orders
 Content-Type: application/json
 {{auth}}
 
@@ -31,3 +31,22 @@ DELETE  {{server}}/main/Customers(1)
 Content-Type: application/json
 {{auth}}
 
+### Main.Orders
+GET {{server}}/main/Orders
+Content-Type: application/json
+{{auth}}
+
+### Main.Orders
+GET {{server}}/main/Orders?$expand=customer
+Content-Type: application/json
+{{auth}}
+
+### Main.Orders
+POST {{server}}/main/Orders
+Content-Type: application/json
+{{auth}}
+
+{
+    "amount": 20.00,
+    "customer_ID": "87e6dcd5-b120-455f-bd9f-7e7ee66c2b99"
+}
