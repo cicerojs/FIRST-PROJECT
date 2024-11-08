@@ -2,47 +2,27 @@
 @auth = Authorization: Basic alice:
 
 ### Main.Customers
-GET {{server}}/main/Customers
-Content-Type: application/json
-{{auth}}
-
-### Main.Customers
-GET {{server}}/main/Customers?$expand=orders
-Content-Type: application/json
-{{auth}}
-
-### Main.Customers
 POST {{server}}/main/Customers
 Content-Type: application/json
 {{auth}}
 
 {
-    "name": "Antonio",
-    "age": 22
+    "name": "Cicero",
+    "age": 28
 }
 
 ### Main.Customers
-PATCH  {{server}}main/Customers(1)
+GET {{server}}/main/Customers?$select=name&$expand=orders($select=amount;$expand=nf($select=id_fiscal))
 Content-Type: application/json
 {{auth}}
-
-{
-    "name": "Cícero",
-    "age": 22
-}
 
 ### Main.Customers
-DELETE  {{server}}/main/Customers(1)
+GET {{server}}/main/Customers?$filter=name eq 'Renato'
 Content-Type: application/json
 {{auth}}
 
-### Main.Orders
-GET {{server}}/main/Orders
-Content-Type: application/json
-{{auth}}
-
-### Main.Orders
-GET {{server}}/main/Orders?$expand=customer
+### Main.Customers
+GET {{server}}/main/Customers?$orderby=age desc
 Content-Type: application/json
 {{auth}}
 
@@ -52,6 +32,26 @@ Content-Type: application/json
 {{auth}}
 
 {
-    "amount": 20.00,
-    "customer_ID": "11dc51f5-247a-442a-a107-b811df288529"
+    "amount": 45.00,
+    "customer_ID": "4727449c-185f-4142-a45c-358cd7caef1e"
 }
+
+### Main.Orders
+POST {{server}}/main/NFs
+Content-Type: application/json
+{{auth}}
+
+{
+    "id_fiscal": "13458",
+    "order_ID": "a9ee8b6b-d119-4dfa-9de6-9af6d09c975b"
+}
+
+### Main.Orders
+GET {{server}}/main/Orders?$expand=customer
+Content-Type: application/json
+{{auth}}
+
+### Main.NFs
+GET {{server}}/main/NFs
+Content-Type: application/json
+{{auth}}
