@@ -14,11 +14,13 @@ entity Customers: cuid {
 
 entity Orders : cuid {
     amount      : Decimal;
+    address     : String;
     customer    : Association to Customers;
     nf          : Composition of one NFs on nf.order = $self; 
 }
 
 entity NFs: cuid {
     id_fiscal   : String;
+    org         : String;
     order       : Association to Orders;      
 }
