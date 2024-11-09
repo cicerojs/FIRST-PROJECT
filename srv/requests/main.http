@@ -7,9 +7,14 @@ Content-Type: application/json
 {{auth}}
 
 {
-    "name": "Cicero",
-    "age": 28
+    "name": "Alison Vinicius",
+    "age": 32
 }
+
+### Main.Customers
+GET {{server}}/main/Customers
+Content-Type: application/json
+{{auth}}
 
 ### Main.Customers
 GET {{server}}/main/Customers?$select=name&$expand=orders($select=amount;$expand=nf($select=id_fiscal))
